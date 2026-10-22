@@ -3,7 +3,7 @@
 *Figure: Dashboard Overview*
 
 ## Project Overview
-This project presents a comprehensive analysis of global retail sales data using Microsoft Excel. The objective is to identify key trends, patterns, and actionable insights through pivot tables, charts, and summary statistics.
+This project presents a comprehensive analysis of global merch sales data using Microsoft Excel. The objective is to identify key trends, patterns, and actionable insights through pivot tables, charts, and summary statistics.
 
 ## Data Source
 The dataset used is `merch_sales.csv`, sourced from Kaggle. It contains transactional-level details of sales made by the company, including revenue, product categories, customer demographics, and locations.
@@ -17,8 +17,8 @@ The dataset used is `merch_sales.csv`, sourced from Kaggle. It contains transact
 
 ## Exploratory Data Analysis (EDA)
 
-### 1. Domestic vs International Sales
-Domestic sales outperformed international sales overall, indicating a stronger market presence locally.
+### 1. Revenue and Average Order Value (AOV)
+Analysed **$856,462** in total revenue and an overall AOV of **$116**. Domestic sales contributed **54.83%** of revenue, while international orders had a higher AOV (**$172**) than domestic orders (**$91**).
 
 ### 2. Monthly Revenue Trend  
 **Insights:**  
