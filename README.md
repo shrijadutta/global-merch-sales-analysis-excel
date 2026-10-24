@@ -9,12 +9,36 @@ This project presents a comprehensive analysis of global merch sales data using 
 The dataset used is `merch_sales.csv`, sourced from Kaggle. It contains transactional-level details of sales made by the company, including revenue, product categories, customer demographics, and locations.
 
 ## Tools Used
-- Microsoft Excel (Pivot Tables, Charts, Power Pivot – DAX)
+- Microsoft Excel (PivotTables, Charts, Power Pivot, DAX)
 
 ## Data Preparation
-- Loaded the `merch_sales.csv` file into Excel.
-- Used a DAX formula to group customers into age brackets for easier demographic analysis.
-
+- Imported the `merch_sales.csv` dataset into Microsoft Excel.
+- Created a dedicated Dates table using Power Query(M):
+  ```powerquery
+  = List.Dates(#date(2023,11,1),396,#duration(1,0,0,0))
+- Loaded both the Merch_sales and Dates table into the Excel Data Model.
+- Created an Age Bracket calculated column in the Merch_sales table using DAX in Power Pivot to group customers for demographic analysis.
+  ```
+  =SWITCH(
+    TRUE(),
+    [Buyer Age] >= 18 && [Buyer Age] <= 20, "18-20",
+    [Buyer Age] >= 21 && [Buyer Age] <= 25, "21-25",
+    [Buyer Age] >= 26 && [Buyer Age] <= 30, "26-30",
+    [Buyer Age] >= 31 && [Buyer Age] <= 35, "31-35",
+    [Buyer Age] > 35, "35+",
+    BLANK()
+  )
+- Created an Average Order Value (AOV) measure in the Merch_sales table using DAX in Power Pivot.
+  ```
+  =Average Order Value:=DIVIDE(
+    SUM(merch_sales[Total Sales]),
+    DISTINCTCOUNT(merch_sales[Order ID])
+  )
+- Added Year, Month, Month-Year, and Month-Year Sort columns to the Date Table using DAX to support time-based analysis and chronological sorting of monthly trends.
+  - **Year**: =FORMAT([Date], "yyyy")
+  - **Month**: =FORMAT([Date], "MMM")
+  - **Month-Year**: =FORMAT([Date], "MMM yy")
+  - **Month-Year Sort**(for chronological sort): =YEAR([Date])*100+MONTH([Date])
 ## Exploratory Data Analysis (EDA)
 
 ### 1. Revenue and Average Order Value (AOV)
